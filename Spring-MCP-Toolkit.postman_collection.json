@@ -1,0 +1,508 @@
+{
+	"info": {
+		"_postman_id": "spring-mcp-toolkit-collection",
+		"name": "Spring MCP Toolkit",
+		"description": "Complete collection of MCP Server requests for database schema and SQL template management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mcp/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp",
+						"health"
+					]
+				},
+				"description": "Simple health check to verify server is running"
+			},
+			"response": []
+		},
+		{
+			"name": "Initialize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"initialize\",\n    \"params\": {}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Initialize MCP session and get server capabilities"
+			},
+			"response": []
+		},
+		{
+			"name": "List All Tools",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 2,\n    \"method\": \"tools/list\",\n    \"params\": {}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get list of all available tools (get_schema, get_templates, get_template)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Database Schema",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 3,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_schema\",\n        \"arguments\": {}\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get complete database schema including tables, columns, types, and relationships"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All SQL Templates",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 4,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_templates\",\n        \"arguments\": {}\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get all available SQL generation templates"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Template - Basic Select",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 5,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"basic_select\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get the basic SELECT template by name"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Template - Inner Join",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 6,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"inner_join\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get the INNER JOIN template by name"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Template - Insert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 7,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"insert\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get the INSERT template by name"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Template - Update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 8,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"update\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get the UPDATE template by name"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Template - Delete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 9,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"delete\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get the DELETE template by name"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Template - Aggregate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 10,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"aggregate\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get the AGGREGATE (GROUP BY) template by name"
+			},
+			"response": []
+		},
+		{
+			"name": "List All Resources",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 11,\n    \"method\": \"resources/list\",\n    \"params\": {}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Get list of all available resources (schema and templates)"
+			},
+			"response": []
+		},
+		{
+			"name": "Read Schema Resource",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 12,\n    \"method\": \"resources/read\",\n    \"params\": {\n        \"uri\": \"schema://database/ecommerce\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Read the database schema resource by URI"
+			},
+			"response": []
+		},
+		{
+			"name": "Read Templates Resource",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 13,\n    \"method\": \"resources/read\",\n    \"params\": {\n        \"uri\": \"templates://sql/all\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Read all SQL templates resource by URI"
+			},
+			"response": []
+		},
+		{
+			"name": "Error Test - Invalid Method",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 14,\n    \"method\": \"invalid_method\",\n    \"params\": {}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Test error handling with an invalid method"
+			},
+			"response": []
+		},
+		{
+			"name": "Error Test - Invalid Tool",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 15,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"invalid_tool\",\n        \"arguments\": {}\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Test error handling with an invalid tool name"
+			},
+			"response": []
+		},
+		{
+			"name": "Error Test - Template Not Found",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 16,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"get_template\",\n        \"arguments\": {\n            \"name\": \"nonexistent_template\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mcp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mcp"
+					]
+				},
+				"description": "Test error handling when template is not found"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "mcpEndpoint",
+			"value": "{{baseUrl}}/mcp",
+			"type": "string"
+		}
+	]
+}
+

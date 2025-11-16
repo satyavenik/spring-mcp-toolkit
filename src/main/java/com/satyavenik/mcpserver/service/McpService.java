@@ -1,6 +1,5 @@
 package com.satyavenik.mcpserver.service;
 
-import com.satyavenik.mcpserver.model.DatabaseSchema;
 import com.satyavenik.mcpserver.model.SqlTemplate;
 import com.satyavenik.mcpserver.protocol.McpError;
 import com.satyavenik.mcpserver.protocol.McpRequest;
@@ -59,20 +58,14 @@ public class McpService {
      * Handle different MCP methods
      */
     private Object handleMethod(String method, Object params) {
-        switch (method) {
-            case "initialize":
-                return handleInitialize();
-            case "tools/list":
-                return handleToolsList();
-            case "tools/call":
-                return handleToolsCall(params);
-            case "resources/list":
-                return handleResourcesList();
-            case "resources/read":
-                return handleResourcesRead(params);
-            default:
-                throw new IllegalArgumentException("Unknown method: " + method);
-        }
+        return switch (method) {
+            case "initialize" -> handleInitialize();
+            case "tools/list" -> handleToolsList();
+            case "tools/call" -> handleToolsCall(params);
+            case "resources/list" -> handleResourcesList();
+            case "resources/read" -> handleResourcesRead(params);
+            default -> throw new IllegalArgumentException("Unknown method: " + method);
+        };
     }
 
     /**
@@ -146,12 +139,10 @@ public class McpService {
         Object content;
         switch (toolName) {
             case "get_schema":
-                DatabaseSchema schema = schemaService.getExampleSchema();
-                content = schema;
+                content = schemaService.getExampleSchema();
                 break;
             case "get_templates":
-                List<SqlTemplate> templates = templateService.getAllTemplates();
-                content = templates;
+                content = templateService.getAllTemplates();
                 break;
             case "get_template":
                 String templateName = (String) arguments.get("name");
